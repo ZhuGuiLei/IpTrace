@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'IpTrace_Example' do
+  pod 'IpTrace', :path => '../'
+
+  target 'IpTrace_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

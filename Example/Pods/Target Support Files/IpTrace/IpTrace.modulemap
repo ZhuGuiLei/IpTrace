@@ -1,0 +1,6 @@
+framework module IpTrace {
+  umbrella header "IpTrace-umbrella.h"
+
+  export *
+  module * { export * }
+}

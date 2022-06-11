@@ -1,0 +1,798 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		044D8C18B9523B41BC6755C6886C1148 /* IpTrace-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF16B52E92607F96CD012EAB6E14909 /* IpTrace-dummy.m */; };
+		0C0B901BA1C6F08272AFC9E4DB4CC4CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9A8242B6669F22072FA3746299A37 /* Foundation.framework */; };
+		1B00975AB3A157574E67DE0700A52D87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FE98CC17472916FB284E3D37369E6D /* CoreLocation.framework */; };
+		242CCD299C63A7728443BA0C2CF0F223 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9A8242B6669F22072FA3746299A37 /* Foundation.framework */; };
+		32705F9C65385CCDC5ED407B232EB55F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A999BC501673B7C71D2B84B9FCE00855 /* UIKit.framework */; };
+		34D9053EBFC473376924F847F1CADCF9 /* Pods-IpTrace_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E83565606BC2C7CD88207B92744954 /* Pods-IpTrace_Example-dummy.m */; };
+		3B1EEDA0A86306676D9FB73AD98C7AA4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BA0DC64230CED50CE8545893440449 /* CoreTelephony.framework */; };
+		54F01C7C19D295482D3AAF09E34E83DF /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 15005A06D3F936621843A9B7936F3FD4 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A150BE921916B8C09C051902508E10B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB5E802162CA70505F2A87E36689D5A /* Reachability.m */; };
+		7A33CBADBC86C55819A64BF88905624C /* IpTrace-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF6CF09DCCBAB7D5118AF06D1363A7C /* IpTrace-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		892D048A89C9727DA8C3DA04A800E3D4 /* IpTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 0723656D8F29EB44BF6A315CEEB06300 /* IpTrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90054A2EC7A145FC70F45B73414C973A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13A743F48AB933A1080DFA11DBA92B5E /* SystemConfiguration.framework */; };
+		A2A5A7A716C93AFCAD487D4D55CEF835 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9A8242B6669F22072FA3746299A37 /* Foundation.framework */; };
+		A384E3961AB68AACE268FFCE451715A5 /* Pods-IpTrace_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60136BC78B04B848279D0D75C95EDC /* Pods-IpTrace_Tests-dummy.m */; };
+		E558B457A2AFCB694A29E5F110EC74DE /* IpTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D01E903881B2849F0C4679D3BC5FDF9 /* IpTrace.m */; };
+		EBCEB0A58BF5880C2FE28380095DA232 /* Pods-IpTrace_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A23481FEC9EBD8B0465D16EE0E7AF39 /* Pods-IpTrace_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FED98BD8A7F33112219F0538DC0E2C4F /* Pods-IpTrace_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AC28CE362EE6B9C1A6249A000BB7CF3D /* Pods-IpTrace_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A9BF1B32F37B2C56BCBBD2CF8083E9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE2641573B01A487D0A137BCC4F83013;
+			remoteInfo = IpTrace;
+		};
+		4618D445BD2CE50FAB30EECBCD8E51BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EC62DD3A7A6809C2D710543801DB7A5;
+			remoteInfo = "Pods-IpTrace_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0723656D8F29EB44BF6A315CEEB06300 /* IpTrace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IpTrace.h; path = IpTrace/Classes/IpTrace.h; sourceTree = "<group>"; };
+		13A743F48AB933A1080DFA11DBA92B5E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		15005A06D3F936621843A9B7936F3FD4 /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = IpTrace/Classes/Reachability.h; sourceTree = "<group>"; };
+		16D071E3C22EFDE161E6E72C1DDE8811 /* Pods-IpTrace_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IpTrace_Example.release.xcconfig"; sourceTree = "<group>"; };
+		23C445F1AD869ACD6AC9C1339AE347DB /* IpTrace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IpTrace.debug.xcconfig; sourceTree = "<group>"; };
+		3A23481FEC9EBD8B0465D16EE0E7AF39 /* Pods-IpTrace_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-IpTrace_Example-umbrella.h"; sourceTree = "<group>"; };
+		3D01E903881B2849F0C4679D3BC5FDF9 /* IpTrace.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IpTrace.m; path = IpTrace/Classes/IpTrace.m; sourceTree = "<group>"; };
+		444CA2D46311BFDA31C03775C1EF7B1A /* Pods-IpTrace_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IpTrace_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		45844A426E31D19733F275BCB5F9E8E1 /* Pods-IpTrace_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-IpTrace_Example"; path = Pods_IpTrace_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		486A26EC92795D9C3099E8CABCFCE6F0 /* IpTrace */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IpTrace; path = IpTrace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56E23833EB595B435D894060EEC61B6D /* Pods-IpTrace_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IpTrace_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		5C60136BC78B04B848279D0D75C95EDC /* Pods-IpTrace_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-IpTrace_Tests-dummy.m"; sourceTree = "<group>"; };
+		63FE98CC17472916FB284E3D37369E6D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		682FB1EF93F18FD55D4745FA16A21AFD /* Pods-IpTrace_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-IpTrace_Example.modulemap"; sourceTree = "<group>"; };
+		71F0CC0B45B3732B4A437C29BF86123B /* IpTrace.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = IpTrace.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		74769A92EBD21217CBC1E0331F209F79 /* Pods-IpTrace_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IpTrace_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7581D70E82431916C320B8C631DA5E23 /* Pods-IpTrace_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-IpTrace_Tests.modulemap"; sourceTree = "<group>"; };
+		7966A64554B14EE7F10B760E37E092E9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		7AB5E802162CA70505F2A87E36689D5A /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = IpTrace/Classes/Reachability.m; sourceTree = "<group>"; };
+		7B9368618EBE67CF0013CD0E9A315A33 /* Pods-IpTrace_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-IpTrace_Tests"; path = Pods_IpTrace_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		846E88BB1328118D459116EE2FA20AA8 /* Pods-IpTrace_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-IpTrace_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8DF6CF09DCCBAB7D5118AF06D1363A7C /* IpTrace-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IpTrace-umbrella.h"; sourceTree = "<group>"; };
+		95E83565606BC2C7CD88207B92744954 /* Pods-IpTrace_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-IpTrace_Example-dummy.m"; sourceTree = "<group>"; };
+		9A63EBE6C996A949E8480A416AAA765F /* Pods-IpTrace_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IpTrace_Example-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A6BA0DC64230CED50CE8545893440449 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		A999BC501673B7C71D2B84B9FCE00855 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		AB73DDD83BB40006BB55C21E5758FF72 /* Pods-IpTrace_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-IpTrace_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AC28CE362EE6B9C1A6249A000BB7CF3D /* Pods-IpTrace_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-IpTrace_Tests-umbrella.h"; sourceTree = "<group>"; };
+		B0B774AC6798556596DCC17740BC68DB /* Pods-IpTrace_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IpTrace_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B9A964B415BF3E28EE8619A7C013275C /* Pods-IpTrace_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IpTrace_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		BCF16B52E92607F96CD012EAB6E14909 /* IpTrace-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IpTrace-dummy.m"; sourceTree = "<group>"; };
+		D0EF66F7432177BC1F34458B354FE65F /* IpTrace.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IpTrace.modulemap; sourceTree = "<group>"; };
+		D13BE51A7063F4E3B0A8CD9D1EC2C057 /* IpTrace-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "IpTrace-Info.plist"; sourceTree = "<group>"; };
+		D1F9A8242B6669F22072FA3746299A37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		E062F1FCDF1D39C6F00186BE1CE4C307 /* IpTrace-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IpTrace-prefix.pch"; sourceTree = "<group>"; };
+		E9B528287305CAE6D326508156F68E0B /* Pods-IpTrace_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IpTrace_Example-frameworks.sh"; sourceTree = "<group>"; };
+		FBEA37A14D04578FB1E0373274735A0E /* IpTrace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IpTrace.release.xcconfig; sourceTree = "<group>"; };
+		FC3F1486CB7003AFEA7F9CC3520BBB8C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		FEA3AA7B0CE7A085FF1135FB3D580657 /* Pods-IpTrace_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IpTrace_Tests-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63C488FBA32D473403A3FCB59FACEF90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B00975AB3A157574E67DE0700A52D87 /* CoreLocation.framework in Frameworks */,
+				3B1EEDA0A86306676D9FB73AD98C7AA4 /* CoreTelephony.framework in Frameworks */,
+				0C0B901BA1C6F08272AFC9E4DB4CC4CE /* Foundation.framework in Frameworks */,
+				90054A2EC7A145FC70F45B73414C973A /* SystemConfiguration.framework in Frameworks */,
+				32705F9C65385CCDC5ED407B232EB55F /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D82CE8E47A746EAFA00BEA5B1DBD2F87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2A5A7A716C93AFCAD487D4D55CEF835 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E399D3E6BAFC51D59F2F08546BF74052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				242CCD299C63A7728443BA0C2CF0F223 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		26D76B28D2BF7CF596BDEE296C856D20 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F81F2EABA095D55A5DF2CB97960DD27B /* IpTrace */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		2DD704CE511C14E053B86BB76B06C316 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB0F3FB336AF12DD25914A3911A41BEA /* Pods-IpTrace_Example */,
+				F089A816635C9C5C5F1C280BA863C232 /* Pods-IpTrace_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		8FC50610BC38CFB8FA415317C049DC07 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				63FE98CC17472916FB284E3D37369E6D /* CoreLocation.framework */,
+				A6BA0DC64230CED50CE8545893440449 /* CoreTelephony.framework */,
+				D1F9A8242B6669F22072FA3746299A37 /* Foundation.framework */,
+				13A743F48AB933A1080DFA11DBA92B5E /* SystemConfiguration.framework */,
+				A999BC501673B7C71D2B84B9FCE00855 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		913B8D1ACA977103345E0451FF34162A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0EF66F7432177BC1F34458B354FE65F /* IpTrace.modulemap */,
+				BCF16B52E92607F96CD012EAB6E14909 /* IpTrace-dummy.m */,
+				D13BE51A7063F4E3B0A8CD9D1EC2C057 /* IpTrace-Info.plist */,
+				E062F1FCDF1D39C6F00186BE1CE4C307 /* IpTrace-prefix.pch */,
+				8DF6CF09DCCBAB7D5118AF06D1363A7C /* IpTrace-umbrella.h */,
+				23C445F1AD869ACD6AC9C1339AE347DB /* IpTrace.debug.xcconfig */,
+				FBEA37A14D04578FB1E0373274735A0E /* IpTrace.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/IpTrace";
+			sourceTree = "<group>";
+		};
+		AB0F3FB336AF12DD25914A3911A41BEA /* Pods-IpTrace_Example */ = {
+			isa = PBXGroup;
+			children = (
+				682FB1EF93F18FD55D4745FA16A21AFD /* Pods-IpTrace_Example.modulemap */,
+				846E88BB1328118D459116EE2FA20AA8 /* Pods-IpTrace_Example-acknowledgements.markdown */,
+				B9A964B415BF3E28EE8619A7C013275C /* Pods-IpTrace_Example-acknowledgements.plist */,
+				95E83565606BC2C7CD88207B92744954 /* Pods-IpTrace_Example-dummy.m */,
+				E9B528287305CAE6D326508156F68E0B /* Pods-IpTrace_Example-frameworks.sh */,
+				9A63EBE6C996A949E8480A416AAA765F /* Pods-IpTrace_Example-Info.plist */,
+				3A23481FEC9EBD8B0465D16EE0E7AF39 /* Pods-IpTrace_Example-umbrella.h */,
+				444CA2D46311BFDA31C03775C1EF7B1A /* Pods-IpTrace_Example.debug.xcconfig */,
+				16D071E3C22EFDE161E6E72C1DDE8811 /* Pods-IpTrace_Example.release.xcconfig */,
+			);
+			name = "Pods-IpTrace_Example";
+			path = "Target Support Files/Pods-IpTrace_Example";
+			sourceTree = "<group>";
+		};
+		B94D7768568A9992200DB461E8CF687F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FC50610BC38CFB8FA415317C049DC07 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C203B89C1D12659EFCAD5035DF3FC2D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				486A26EC92795D9C3099E8CABCFCE6F0 /* IpTrace */,
+				45844A426E31D19733F275BCB5F9E8E1 /* Pods-IpTrace_Example */,
+				7B9368618EBE67CF0013CD0E9A315A33 /* Pods-IpTrace_Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				26D76B28D2BF7CF596BDEE296C856D20 /* Development Pods */,
+				B94D7768568A9992200DB461E8CF687F /* Frameworks */,
+				C203B89C1D12659EFCAD5035DF3FC2D7 /* Products */,
+				2DD704CE511C14E053B86BB76B06C316 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		F089A816635C9C5C5F1C280BA863C232 /* Pods-IpTrace_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7581D70E82431916C320B8C631DA5E23 /* Pods-IpTrace_Tests.modulemap */,
+				AB73DDD83BB40006BB55C21E5758FF72 /* Pods-IpTrace_Tests-acknowledgements.markdown */,
+				56E23833EB595B435D894060EEC61B6D /* Pods-IpTrace_Tests-acknowledgements.plist */,
+				5C60136BC78B04B848279D0D75C95EDC /* Pods-IpTrace_Tests-dummy.m */,
+				FEA3AA7B0CE7A085FF1135FB3D580657 /* Pods-IpTrace_Tests-Info.plist */,
+				AC28CE362EE6B9C1A6249A000BB7CF3D /* Pods-IpTrace_Tests-umbrella.h */,
+				74769A92EBD21217CBC1E0331F209F79 /* Pods-IpTrace_Tests.debug.xcconfig */,
+				B0B774AC6798556596DCC17740BC68DB /* Pods-IpTrace_Tests.release.xcconfig */,
+			);
+			name = "Pods-IpTrace_Tests";
+			path = "Target Support Files/Pods-IpTrace_Tests";
+			sourceTree = "<group>";
+		};
+		F69B75E84322C1AFC57E71343255E3E4 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				71F0CC0B45B3732B4A437C29BF86123B /* IpTrace.podspec */,
+				FC3F1486CB7003AFEA7F9CC3520BBB8C /* LICENSE */,
+				7966A64554B14EE7F10B760E37E092E9 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		F81F2EABA095D55A5DF2CB97960DD27B /* IpTrace */ = {
+			isa = PBXGroup;
+			children = (
+				0723656D8F29EB44BF6A315CEEB06300 /* IpTrace.h */,
+				3D01E903881B2849F0C4679D3BC5FDF9 /* IpTrace.m */,
+				15005A06D3F936621843A9B7936F3FD4 /* Reachability.h */,
+				7AB5E802162CA70505F2A87E36689D5A /* Reachability.m */,
+				F69B75E84322C1AFC57E71343255E3E4 /* Pod */,
+				913B8D1ACA977103345E0451FF34162A /* Support Files */,
+			);
+			name = IpTrace;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		525DACA34557801C1D47E781D9225310 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FED98BD8A7F33112219F0538DC0E2C4F /* Pods-IpTrace_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4BD38D1E900FC7F6F94C194DCEDD1D2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				892D048A89C9727DA8C3DA04A800E3D4 /* IpTrace.h in Headers */,
+				7A33CBADBC86C55819A64BF88905624C /* IpTrace-umbrella.h in Headers */,
+				54F01C7C19D295482D3AAF09E34E83DF /* Reachability.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9790E90CC3BA56C96ADDA6C5F3F433D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBCEB0A58BF5880C2FE28380095DA232 /* Pods-IpTrace_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		03D3C2B9ABA9280812BD2B1F1A0EBA0C /* Pods-IpTrace_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A0911B306C99E48A101C8C6F485CC04 /* Build configuration list for PBXNativeTarget "Pods-IpTrace_Tests" */;
+			buildPhases = (
+				525DACA34557801C1D47E781D9225310 /* Headers */,
+				E4404B80FAB9C0563E46FDAAA6A1171A /* Sources */,
+				E399D3E6BAFC51D59F2F08546BF74052 /* Frameworks */,
+				0566F6EB7300E0B4B67123933EA24696 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4CB0C9F176C6FF7014BB64278D9D236 /* PBXTargetDependency */,
+			);
+			name = "Pods-IpTrace_Tests";
+			productName = Pods_IpTrace_Tests;
+			productReference = 7B9368618EBE67CF0013CD0E9A315A33 /* Pods-IpTrace_Tests */;
+			productType = "com.apple.product-type.framework";
+		};
+		4EC62DD3A7A6809C2D710543801DB7A5 /* Pods-IpTrace_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEBB780CCEB3D7F9EE97955AEA2011C3 /* Build configuration list for PBXNativeTarget "Pods-IpTrace_Example" */;
+			buildPhases = (
+				E9790E90CC3BA56C96ADDA6C5F3F433D /* Headers */,
+				A96AEEB20A6CD4DC5E45BC1CCD655EB8 /* Sources */,
+				D82CE8E47A746EAFA00BEA5B1DBD2F87 /* Frameworks */,
+				7A0A64FFB1A3A074A1AAF07B09738F56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F89C1D1232CE5B744ADC3F6AC0C1718 /* PBXTargetDependency */,
+			);
+			name = "Pods-IpTrace_Example";
+			productName = Pods_IpTrace_Example;
+			productReference = 45844A426E31D19733F275BCB5F9E8E1 /* Pods-IpTrace_Example */;
+			productType = "com.apple.product-type.framework";
+		};
+		AE2641573B01A487D0A137BCC4F83013 /* IpTrace */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 293D812E6E468AC92F82731F59FCA614 /* Build configuration list for PBXNativeTarget "IpTrace" */;
+			buildPhases = (
+				E4BD38D1E900FC7F6F94C194DCEDD1D2 /* Headers */,
+				C7045E7205283F8952BDFF93D5E417B3 /* Sources */,
+				63C488FBA32D473403A3FCB59FACEF90 /* Frameworks */,
+				2FC047DFE6688934B485C6C5E7A42CC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IpTrace;
+			productName = IpTrace;
+			productReference = 486A26EC92795D9C3099E8CABCFCE6F0 /* IpTrace */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = C203B89C1D12659EFCAD5035DF3FC2D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE2641573B01A487D0A137BCC4F83013 /* IpTrace */,
+				4EC62DD3A7A6809C2D710543801DB7A5 /* Pods-IpTrace_Example */,
+				03D3C2B9ABA9280812BD2B1F1A0EBA0C /* Pods-IpTrace_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0566F6EB7300E0B4B67123933EA24696 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FC047DFE6688934B485C6C5E7A42CC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A0A64FFB1A3A074A1AAF07B09738F56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A96AEEB20A6CD4DC5E45BC1CCD655EB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D9053EBFC473376924F847F1CADCF9 /* Pods-IpTrace_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7045E7205283F8952BDFF93D5E417B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E558B457A2AFCB694A29E5F110EC74DE /* IpTrace.m in Sources */,
+				044D8C18B9523B41BC6755C6886C1148 /* IpTrace-dummy.m in Sources */,
+				5A150BE921916B8C09C051902508E10B /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4404B80FAB9C0563E46FDAAA6A1171A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A384E3961AB68AACE268FFCE451715A5 /* Pods-IpTrace_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F89C1D1232CE5B744ADC3F6AC0C1718 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IpTrace;
+			target = AE2641573B01A487D0A137BCC4F83013 /* IpTrace */;
+			targetProxy = 3A9BF1B32F37B2C56BCBBD2CF8083E9C /* PBXContainerItemProxy */;
+		};
+		D4CB0C9F176C6FF7014BB64278D9D236 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-IpTrace_Example";
+			target = 4EC62DD3A7A6809C2D710543801DB7A5 /* Pods-IpTrace_Example */;
+			targetProxy = 4618D445BD2CE50FAB30EECBCD8E51BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		02B7EF68F64C37783163D3BF4590CE67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBEA37A14D04578FB1E0373274735A0E /* IpTrace.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IpTrace/IpTrace-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IpTrace/IpTrace-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IpTrace/IpTrace.modulemap";
+				PRODUCT_MODULE_NAME = IpTrace;
+				PRODUCT_NAME = IpTrace;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		045E72E46204AE7AE72219143AEC23D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0B774AC6798556596DCC17740BC68DB /* Pods-IpTrace_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-IpTrace_Tests/Pods-IpTrace_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-IpTrace_Tests/Pods-IpTrace_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0DE98F55020222D1E4021FD16001982C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 444CA2D46311BFDA31C03775C1EF7B1A /* Pods-IpTrace_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-IpTrace_Example/Pods-IpTrace_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-IpTrace_Example/Pods-IpTrace_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		91759E35F480076229F87D0E62E2A16F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74769A92EBD21217CBC1E0331F209F79 /* Pods-IpTrace_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-IpTrace_Tests/Pods-IpTrace_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-IpTrace_Tests/Pods-IpTrace_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		D22CD6637F9F9F8B134058D0517D0783 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16D071E3C22EFDE161E6E72C1DDE8811 /* Pods-IpTrace_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-IpTrace_Example/Pods-IpTrace_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-IpTrace_Example/Pods-IpTrace_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E50C293CA39004FC451E41123E7C7E55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23C445F1AD869ACD6AC9C1339AE347DB /* IpTrace.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IpTrace/IpTrace-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IpTrace/IpTrace-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IpTrace/IpTrace.modulemap";
+				PRODUCT_MODULE_NAME = IpTrace;
+				PRODUCT_NAME = IpTrace;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		293D812E6E468AC92F82731F59FCA614 /* Build configuration list for PBXNativeTarget "IpTrace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E50C293CA39004FC451E41123E7C7E55 /* Debug */,
+				02B7EF68F64C37783163D3BF4590CE67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A0911B306C99E48A101C8C6F485CC04 /* Build configuration list for PBXNativeTarget "Pods-IpTrace_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91759E35F480076229F87D0E62E2A16F /* Debug */,
+				045E72E46204AE7AE72219143AEC23D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEBB780CCEB3D7F9EE97955AEA2011C3 /* Build configuration list for PBXNativeTarget "Pods-IpTrace_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DE98F55020222D1E4021FD16001982C /* Debug */,
+				D22CD6637F9F9F8B134058D0517D0783 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_IpTrace_Tests {
+  umbrella header "Pods-IpTrace_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

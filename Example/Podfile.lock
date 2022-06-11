@@ -1,0 +1,16 @@
+PODS:
+  - IpTrace (1.0.1)
+
+DEPENDENCIES:
+  - IpTrace (from `../`)
+
+EXTERNAL SOURCES:
+  IpTrace:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  IpTrace: f9c3dd101c6d6c801c706f1e83fe7bba53c9de1d
+
+PODFILE CHECKSUM: 05b2b1903d1b227c25f9a01d2c263ab35d948cfd
+
+COCOAPODS: 1.11.3

@@ -1,0 +1,6 @@
+framework module Pods_IpTrace_Example {
+  umbrella header "Pods-IpTrace_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
