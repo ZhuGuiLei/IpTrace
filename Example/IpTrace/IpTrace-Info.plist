@@ -31,6 +31,8 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>使用时定位</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>授权仅用于区分追踪广告的来源，减少无关信息的干扰</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

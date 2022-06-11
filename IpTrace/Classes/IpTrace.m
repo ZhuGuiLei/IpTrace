@@ -10,13 +10,20 @@
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreLocation/CoreLocation.h>
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
+#import <AdSupport/AdSupport.h>
 #import "Reachability.h"
+
+static NSString *IpTraceIdfa = @"IpTraceIdfa";
 
 @interface IpTrace () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLGeocoder *geocoder;
+
 @property (nonatomic, copy) NSString *latitude;
 @property (nonatomic, copy) NSString *longitude;
+@property (nonatomic, copy) NSString *area;
 
 @end
 
@@ -39,6 +46,7 @@
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [self.locationManager requestWhenInUseAuthorization];
         [self.locationManager startUpdatingLocation];
+        self.geocoder = [[CLGeocoder alloc] init];
     }
     
 }
@@ -47,9 +55,19 @@
     CLLocation *location = locations.lastObject;
     self.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     self.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    
+    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (placemarks.count > 0) {
+            CLPlacemark *placemark = placemarks.firstObject;
+            NSArray *list = placemark.addressDictionary[@"FormattedAddressLines"];
+            self.area = list.firstObject;
+            [IpTrace requestInit];
+        }
+    }];
+    
     [self.locationManager stopUpdatingLocation];
     
-    [IpTrace requestInit];
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -58,9 +76,15 @@
 
 + (void)requestInit {
     NSURL *url = [NSURL URLWithString:@"http://trace.ssoapi.com/v1/init"];
+//    NSURL *url = [NSURL URLWithString:@"http://10.3.3.177:17001/v1/init"];
     //网络请求对象
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
     request.timeoutInterval = 5.0;
+    
+    [request setValue:@"ios" forHTTPHeaderField:@"plat"];
+    [request setValue:[IpTrace idfa] forHTTPHeaderField:@"idfa"];
+    [request setValue:@"appstore" forHTTPHeaderField:@"channel"];
+    
     NSURLSession * session = [NSURLSession sharedSession];
     //请求任务
     NSURLSessionDataTask * dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -92,19 +116,25 @@
     params[@"ip_type"] = [[IpTrace getNetconnType] isEqual:@"Wifi"] ? @(2) : @(1);
     params[@"longitude"] = [IpTrace shared].longitude;
     params[@"latitude"] = [IpTrace shared].latitude;
+    NSString *area = [[IpTrace shared].area stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    params[@"area"] = area;
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
     NSString * json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"lj_json = %@", json);
-    NSString *sign = [IpTrace lj_aes256_encrypt:json withKey:@"asdrewqsdfzxcfds"];
+    NSString *sign = [IpTrace aes256_encrypt:json withKey:@"asdrewqsdfzxcfds"];
     
     NSURL *url = [NSURL URLWithString:@"http://trace.ssoapi.com/v1/ip_info_add"];
+//    NSURL *url = [NSURL URLWithString:@"http://10.3.3.177:17001/v1/ip_info_add"];
     //网络请求对象
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.timeoutInterval = 5.0;
     request.HTTPMethod = @"POST";
 
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"ios" forHTTPHeaderField:@"plat"];
+    [request setValue:[IpTrace idfa] forHTTPHeaderField:@"idfa"];
+    [request setValue:@"appstore" forHTTPHeaderField:@"channel"];
     NSDictionary *body = @{@"sign": sign};
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject:body options:NSJSONWritingPrettyPrinted error:nil];
     
@@ -118,6 +148,32 @@
     }];
     [dataTask resume];
 }
+
+/// 广告标识
++ (NSString *)idfa {
+    NSString *idfa = [[NSUserDefaults standardUserDefaults] stringForKey:IpTraceIdfa];
+    if (idfa.length == 0 || [idfa hasSuffix:@"00000000"]) {
+        if (@available(iOS 14, *)) {
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
+                    NSString *idfa = [[ASIdentifierManager sharedManager] advertisingIdentifier].UUIDString;
+                    [[NSUserDefaults standardUserDefaults] setObject:idfa forKey:IpTraceIdfa];
+                }
+            }];
+        } else {
+            if ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
+                idfa = [[ASIdentifierManager sharedManager] advertisingIdentifier].UUIDString;
+                [[NSUserDefaults standardUserDefaults] setObject:idfa forKey:IpTraceIdfa];
+                return idfa;
+            } else {
+                NSLog(@"lj_请在设置-隐私-广告中打开广告跟踪功能");
+            }
+        }
+    }
+    idfa = [idfa stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    return idfa;
+}
+
 
 + (BOOL)isVPNOn
 {
@@ -171,12 +227,12 @@
 
 
 // 加密
-+ (NSString *)lj_aes256_encrypt:(NSString *)str withKey:(NSString *)key {
++ (NSString *)aes256_encrypt:(NSString *)str withKey:(NSString *)key {
     
     const char *cstr = [str cStringUsingEncoding: NSUTF8StringEncoding];
     NSData *data = [NSData dataWithBytes:cstr length: str.length];
     //对数据进行加密
-    NSData *result = [IpTrace lj_aes256_encryptData:data withKey:key];
+    NSData *result = [IpTrace aes256_encryptData:data withKey:key];
     //转换为2进制字符串
     if (result && result.length > 0) {
         NSString *str = [result base64EncodedStringWithOptions:0];
@@ -186,7 +242,7 @@
 }
 
 // 加密
-+ (NSData *)lj_aes256_encryptData:(NSData *)data withKey:(NSString *)key {
++ (NSData *)aes256_encryptData:(NSData *)data withKey:(NSString *)key {
     
     char keyPtr[kCCKeySizeAES256 + 1];
     bzero(keyPtr, sizeof(keyPtr));
@@ -214,6 +270,50 @@
         return data;
     }
     
+    free(buffer);
+    return nil;
+}
+
+// 解密
++ (NSString *)aes256_decrypt:(NSString *)str withKey:(NSString *)key {
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:str options:0];
+    //对数据进行解密
+    NSData* result = [IpTrace aes256_decryptData:data withKey:key];
+    if (result && result.length > 0) {
+        NSString *str = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+        return str;
+    }
+    return nil;
+}
+
+// 解密
++ (NSData *)aes256_decryptData:(NSData *)data withKey:(NSString *)key {
+    
+    char keyPtr[kCCKeySizeAES256+1];
+    bzero(keyPtr, sizeof(keyPtr));
+    [key getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
+    
+    NSUInteger dataLength = [data length];
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc(bufferSize);
+    size_t numBytesDecrypted = 0;
+    
+    // IV
+    char ivPtr[kCCBlockSizeAES128 + 1];
+    bzero(ivPtr, sizeof(ivPtr));
+    [key getCString:ivPtr maxLength:sizeof(ivPtr) encoding:NSUTF8StringEncoding];
+    
+    CCCryptorStatus cryptStatus = CCCrypt(kCCDecrypt, kCCAlgorithmAES128,
+                                          kCCOptionPKCS7Padding,
+                                          keyPtr, kCCBlockSizeAES128,
+                                          ivPtr,
+                                          [data bytes], dataLength,
+                                          buffer, bufferSize,
+                                          &numBytesDecrypted);
+    if (cryptStatus == kCCSuccess) {
+        NSData *data = [NSData dataWithBytesNoCopy:buffer length:numBytesDecrypted];
+        return data;
+    }
     free(buffer);
     return nil;
 }

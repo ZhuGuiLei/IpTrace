@@ -7,7 +7,7 @@
 //
 
 #import "ITAppDelegate.h"
-#import <IpTrace/IpTrace.h>
+#import "IpTrace.h"
 
 @implementation ITAppDelegate
 
