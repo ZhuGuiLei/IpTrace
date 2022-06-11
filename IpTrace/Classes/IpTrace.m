@@ -15,6 +15,8 @@
 #import "Reachability.h"
 
 static NSString *IpTraceIdfa = @"IpTraceIdfa";
+static NSString *IpTraceSecond = @"IpTraceSecond";
+static NSString *IpTraceLastTime = @"IpTraceLastTime";
 
 @interface IpTrace () <CLLocationManagerDelegate>
 
@@ -40,6 +42,15 @@ static NSString *IpTraceIdfa = @"IpTraceIdfa";
 
 - (void)start {
     
+    /// 防止短时间内多次请求
+    double lastTime = [[NSUserDefaults standardUserDefaults] doubleForKey:IpTraceLastTime];
+    double interval = [[NSDate date] timeIntervalSince1970] - lastTime;
+    NSInteger second = [[NSUserDefaults standardUserDefaults] integerForKey:IpTraceSecond];
+    if (second > interval) {
+        return;
+    }
+    
+    /// 定位
     self.locationManager = [[CLLocationManager alloc] init];
     if ([CLLocationManager locationServicesEnabled]) {
         self.locationManager.delegate = self;
@@ -96,8 +107,12 @@ static NSString *IpTraceIdfa = @"IpTraceIdfa";
             if (code == 200) {
                 NSDictionary *data = result[@"data"];
                 NSString *client_ip = data[@"client_ip"];
+                NSString *second = data[@"second"];
                 long task_id = [data[@"task_id"] longValue];
                 [IpTrace requestInfoAdd:client_ip withTask_id:task_id];
+                
+                [[NSUserDefaults standardUserDefaults] setInteger:second.intValue forKey:IpTraceSecond];
+                [[NSUserDefaults standardUserDefaults] setDouble:[[NSDate date] timeIntervalSince1970] forKey:IpTraceLastTime];
             }
         }
     }];
