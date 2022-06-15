@@ -10,6 +10,12 @@
 		0AE540069151C485E3731F5383EA9366 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A999BC501673B7C71D2B84B9FCE00855 /* UIKit.framework */; };
 		0F37A68E36C1A7C7B12EDECBD91C2FD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9A8242B6669F22072FA3746299A37 /* Foundation.framework */; };
 		15628D575D64A5D53D76B6FB2EC4799E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FE98CC17472916FB284E3D37369E6D /* CoreLocation.framework */; };
+		1835C7D528598734002808EB /* TracerouteCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835C7CF28598733002808EB /* TracerouteCommon.h */; };
+		1835C7D628598734002808EB /* Traceroute.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835C7D028598733002808EB /* Traceroute.m */; };
+		1835C7D728598734002808EB /* TracerouteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835C7D128598733002808EB /* TracerouteRecord.m */; };
+		1835C7D828598734002808EB /* Traceroute.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835C7D228598733002808EB /* Traceroute.h */; };
+		1835C7D928598734002808EB /* TracerouteCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1835C7D328598733002808EB /* TracerouteCommon.m */; };
+		1835C7DA28598734002808EB /* TracerouteRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 1835C7D428598733002808EB /* TracerouteRecord.h */; };
 		242CCD299C63A7728443BA0C2CF0F223 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9A8242B6669F22072FA3746299A37 /* Foundation.framework */; };
 		299E22F7650F34DFCE71706DCFD86F1B /* TracerouteRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = AB5B12152E32D476AE9CE1B271A8E387 /* TracerouteRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D9053EBFC473376924F847F1CADCF9 /* Pods-IpTrace_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E83565606BC2C7CD88207B92744954 /* Pods-IpTrace_Example-dummy.m */; };
@@ -53,6 +59,12 @@
 		1394A7E15DA821F881AE803FE3E36A1B /* TracerouteCommon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TracerouteCommon.m; sourceTree = "<group>"; };
 		13A743F48AB933A1080DFA11DBA92B5E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		16D071E3C22EFDE161E6E72C1DDE8811 /* Pods-IpTrace_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IpTrace_Example.release.xcconfig"; sourceTree = "<group>"; };
+		1835C7CF28598733002808EB /* TracerouteCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracerouteCommon.h; sourceTree = "<group>"; };
+		1835C7D028598733002808EB /* Traceroute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Traceroute.m; sourceTree = "<group>"; };
+		1835C7D128598733002808EB /* TracerouteRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracerouteRecord.m; sourceTree = "<group>"; };
+		1835C7D228598733002808EB /* Traceroute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Traceroute.h; sourceTree = "<group>"; };
+		1835C7D328598733002808EB /* TracerouteCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracerouteCommon.m; sourceTree = "<group>"; };
+		1835C7D428598733002808EB /* TracerouteRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracerouteRecord.h; sourceTree = "<group>"; };
 		203624BDF51804060089FBFF1A8B9B31 /* TracerouteCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TracerouteCommon.h; sourceTree = "<group>"; };
 		22CBAFDF6334FDBF947C52D7EBBB8744 /* IpTrace.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IpTrace.modulemap; sourceTree = "<group>"; };
 		2CBBE26A6D3EFBE86D279F4F47E30795 /* IpTrace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IpTrace.release.xcconfig; sourceTree = "<group>"; };
@@ -68,7 +80,7 @@
 		58FADCE0257132276E95A8C33C873D26 /* IpTrace-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IpTrace-dummy.m"; sourceTree = "<group>"; };
 		5C60136BC78B04B848279D0D75C95EDC /* Pods-IpTrace_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-IpTrace_Tests-dummy.m"; sourceTree = "<group>"; };
 		63FE98CC17472916FB284E3D37369E6D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
-		67683229E143E0A4B86B9F1EE9BFC749 /* IpTrace.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = IpTrace.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		67683229E143E0A4B86B9F1EE9BFC749 /* IpTrace.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = IpTrace.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		682FB1EF93F18FD55D4745FA16A21AFD /* Pods-IpTrace_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-IpTrace_Example.modulemap"; sourceTree = "<group>"; };
 		74769A92EBD21217CBC1E0331F209F79 /* Pods-IpTrace_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IpTrace_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7581D70E82431916C320B8C631DA5E23 /* Pods-IpTrace_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-IpTrace_Tests.modulemap"; sourceTree = "<group>"; };
@@ -76,10 +88,10 @@
 		7B9368618EBE67CF0013CD0E9A315A33 /* Pods-IpTrace_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-IpTrace_Tests"; path = Pods_IpTrace_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815153E007BFC02BA6B3E439FB7C0E2B /* IpTrace-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "IpTrace-Info.plist"; sourceTree = "<group>"; };
 		846E88BB1328118D459116EE2FA20AA8 /* Pods-IpTrace_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-IpTrace_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8DEFD87F32884E2C859380894F8770B4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		8DEFD87F32884E2C859380894F8770B4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		95E83565606BC2C7CD88207B92744954 /* Pods-IpTrace_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-IpTrace_Example-dummy.m"; sourceTree = "<group>"; };
 		9A63EBE6C996A949E8480A416AAA765F /* Pods-IpTrace_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IpTrace_Example-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A118D6EC0708603B403A66463F23FF6E /* Traceroute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Traceroute.h; sourceTree = "<group>"; };
 		A6BA0DC64230CED50CE8545893440449 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		A7448590B734EE207C6D71447C9E5B1C /* IpTrace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IpTrace.h; path = IpTrace/Classes/IpTrace.h; sourceTree = "<group>"; };
@@ -91,7 +103,7 @@
 		B9A964B415BF3E28EE8619A7C013275C /* Pods-IpTrace_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IpTrace_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		C11DFD65393FE06BDBC489282DDA88F2 /* IpTrace-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IpTrace-umbrella.h"; sourceTree = "<group>"; };
 		D1F9A8242B6669F22072FA3746299A37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E423D86389621705E63C2FC3CA8956CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		E423D86389621705E63C2FC3CA8956CB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E9B528287305CAE6D326508156F68E0B /* Pods-IpTrace_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IpTrace_Example-frameworks.sh"; sourceTree = "<group>"; };
 		ED1C8E0487026FE3B66B63FA8CA638AE /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = IpTrace/Classes/Reachability.m; sourceTree = "<group>"; };
 		FB2908B069488DA2B26675D6D4790E7C /* IpTrace-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IpTrace-prefix.pch"; sourceTree = "<group>"; };
@@ -130,6 +142,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1835C7CE28598733002808EB /* Traceroute */ = {
+			isa = PBXGroup;
+			children = (
+				1835C7CF28598733002808EB /* TracerouteCommon.h */,
+				1835C7D028598733002808EB /* Traceroute.m */,
+				1835C7D128598733002808EB /* TracerouteRecord.m */,
+				1835C7D228598733002808EB /* Traceroute.h */,
+				1835C7D328598733002808EB /* TracerouteCommon.m */,
+				1835C7D428598733002808EB /* TracerouteRecord.h */,
+			);
+			name = Traceroute;
+			path = IpTrace/Classes/Traceroute;
+			sourceTree = "<group>";
+		};
 		2DD704CE511C14E053B86BB76B06C316 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +201,7 @@
 		83A26479843A3162547DEDA3305B0419 /* IpTrace */ = {
 			isa = PBXGroup;
 			children = (
+				1835C7CE28598733002808EB /* Traceroute */,
 				A7448590B734EE207C6D71447C9E5B1C /* IpTrace.h */,
 				795EEEDEF8A180F9FA557CD0F2CAA022 /* IpTrace.m */,
 				4A086BA082808BC339A5C23EC9E97BC5 /* Reachability.h */,
@@ -290,10 +317,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1835C7D828598734002808EB /* Traceroute.h in Headers */,
 				95A0A5EB9352D6C92409EC4B4B02595A /* IpTrace.h in Headers */,
 				59296724E703F2BB3C1C04D06ECD7A71 /* IpTrace-umbrella.h in Headers */,
 				6D75C33C5634303B13B063DB268C3ECA /* Reachability.h in Headers */,
+				1835C7DA28598734002808EB /* TracerouteRecord.h in Headers */,
 				ACA6F7480B0B980EA105C0F88A13C8E4 /* Traceroute.h in Headers */,
+				1835C7D528598734002808EB /* TracerouteCommon.h in Headers */,
 				E72EB5A0014AFA33C5673900B3B1B768 /* TracerouteCommon.h in Headers */,
 				299E22F7650F34DFCE71706DCFD86F1B /* TracerouteRecord.h in Headers */,
 			);
@@ -434,9 +464,12 @@
 			files = (
 				C91FA8BAF3DBBD9A7DB99DD3C9A0441F /* IpTrace.m in Sources */,
 				BF7293B903AF71DF647D957EBDE7D648 /* IpTrace-dummy.m in Sources */,
+				1835C7D728598734002808EB /* TracerouteRecord.m in Sources */,
 				9AE62600A9158A98501AB21D62F6289C /* Reachability.m in Sources */,
+				1835C7D928598734002808EB /* TracerouteCommon.m in Sources */,
 				C209709E3F926054A172BD997401DEAE /* Traceroute.m in Sources */,
 				3CA56EB248F312C9790DBD61DC842110 /* TracerouteCommon.m in Sources */,
+				1835C7D628598734002808EB /* Traceroute.m in Sources */,
 				C4BFC08F334E889B28CDD43E62E51AA3 /* TracerouteRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -746,8 +779,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
