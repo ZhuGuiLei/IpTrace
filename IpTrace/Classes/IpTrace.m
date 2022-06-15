@@ -13,19 +13,27 @@
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
 #import <AdSupport/AdSupport.h>
 #import "Reachability.h"
+#import "Traceroute.h"
 
 static NSString *IpTraceIdfa = @"IpTraceIdfa";
 static NSString *IpTraceSecond = @"IpTraceSecond";
 static NSString *IpTraceLastTime = @"IpTraceLastTime";
+
+static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
+//static NSString *IpTraceAPI = @"http://10.3.3.177:17001/";
 
 @interface IpTrace () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLGeocoder *geocoder;
 
+/// 地理位置
 @property (nonatomic, copy) NSString *latitude;
 @property (nonatomic, copy) NSString *longitude;
 @property (nonatomic, copy) NSString *area;
+
+@property (nonatomic, strong) NSDictionary *initdic;
+@property (nonatomic, strong) NSArray *tracerouteArr;
 
 @end
 
@@ -47,7 +55,7 @@ static NSString *IpTraceLastTime = @"IpTraceLastTime";
     double interval = [[NSDate date] timeIntervalSince1970] - lastTime;
     NSInteger second = [[NSUserDefaults standardUserDefaults] integerForKey:IpTraceSecond];
     if (second > interval) {
-        return;
+//        return;
     }
     
     /// 定位
@@ -72,7 +80,7 @@ static NSString *IpTraceLastTime = @"IpTraceLastTime";
             CLPlacemark *placemark = placemarks.firstObject;
             NSArray *list = placemark.addressDictionary[@"FormattedAddressLines"];
             self.area = list.firstObject;
-            [IpTrace requestInit];
+            [self requestInit];
         }
     }];
     
@@ -82,12 +90,12 @@ static NSString *IpTraceLastTime = @"IpTraceLastTime";
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"lj_location = 定位失败");
+    NSLog(@"it_location = 定位失败");
 }
 
-+ (void)requestInit {
-    NSURL *url = [NSURL URLWithString:@"http://trace.ssoapi.com/v1/init"];
-//    NSURL *url = [NSURL URLWithString:@"http://10.3.3.177:17001/v1/init"];
+- (void)requestInit {
+    NSString *path = [NSString stringWithFormat:@"%@%@", IpTraceAPI, @"v1/init"];
+    NSURL *url = [NSURL URLWithString:path];
     //网络请求对象
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
     request.timeoutInterval = 5.0;
@@ -102,24 +110,60 @@ static NSString *IpTraceLastTime = @"IpTraceLastTime";
         //主线程
         if (!error) {
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"lj_result = %@",result);
+            NSLog(@"it_result = %@",result);
             int code = [result[@"code"] intValue];
             if (code == 200) {
-                NSDictionary *data = result[@"data"];
-                NSString *client_ip = data[@"client_ip"];
-                NSString *second = data[@"second"];
-                long task_id = [data[@"task_id"] longValue];
-                [IpTrace requestInfoAdd:client_ip withTask_id:task_id];
+                self.initdic = result[@"data"];
                 
-                [[NSUserDefaults standardUserDefaults] setInteger:second.intValue forKey:IpTraceSecond];
-                [[NSUserDefaults standardUserDefaults] setDouble:[[NSDate date] timeIntervalSince1970] forKey:IpTraceLastTime];
+                [self requestInfoAdd:@""];
+                
+                [self traceroutePressed:0];
             }
         }
     }];
     [dataTask resume];
 }
 
-+ (void)requestInfoAdd:(NSString *)client_ip withTask_id:(long)task_id {
+
+- (void)traceroutePressed:(NSInteger)item {
+    
+    NSString *server_ip_list = self.initdic[@"server_ip_list"];
+    NSArray *targetIpArr = [server_ip_list componentsSeparatedByString:@","];
+    if (item >= targetIpArr.count) {
+        return;
+    }
+    NSString *targetIp = targetIpArr[item];
+    [Traceroute startTracerouteWithHost:targetIp
+                                  queue:dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
+                           stepCallback:^(TracerouteRecord *record) {
+        
+    } finish:^(NSArray<TracerouteRecord *> *results, BOOL succeed) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (succeed) {
+                NSMutableArray *arr = [[NSMutableArray alloc] init];
+                for (TracerouteRecord *result in results) {
+                    if (result.ip != nil && ![result.ip isEqual:targetIp]) {
+                        [arr addObject:result.ip];
+                    }
+                }
+                self.tracerouteArr = [NSArray arrayWithArray:arr];
+                NSLog(@"it_%@", self.tracerouteArr);
+                
+                [self requestInfoAdd:targetIp];
+                
+            } else {
+                NSLog(@"it_error:%@", targetIp);
+            }
+            [self traceroutePressed:item + 1];
+        });
+    }];
+}
+
+
+- (void)requestInfoAdd:(NSString *)target_ip {
+    
+    NSString *client_ip = self.initdic[@"client_ip"];
+    long task_id = [self.initdic[@"task_id"] longValue];
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     params[@"ip"] = client_ip;
@@ -127,23 +171,38 @@ static NSString *IpTraceLastTime = @"IpTraceLastTime";
     /// 开启1 关闭2
     params[@"is_vpn"] = @([IpTrace isVPNOn] ? 1 : 2);
     /// 流量1 wifi 2
-//    NetworkStatus status = [[[Reachability alloc] init] currentReachabilityStatus];
     params[@"ip_type"] = [[IpTrace getNetconnType] isEqual:@"Wifi"] ? @(2) : @(1);
     params[@"longitude"] = [IpTrace shared].longitude;
     params[@"latitude"] = [IpTrace shared].latitude;
     NSString *area = [[IpTrace shared].area stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     params[@"area"] = area;
     
+    if (target_ip.length > 0) {
+        NSMutableArray *dicArr = [[NSMutableArray alloc] init];
+        for (int i = 1; i <= self.tracerouteArr.count; i++) {
+            NSString *trace_ip = self.tracerouteArr[i-1];
+            NSDictionary *dic = @{@"task_id": @(task_id),
+                                  @"original_ip": client_ip,
+                                  @"target_ip": target_ip,
+                                  @"trace_ip": trace_ip};
+            [dicArr addObject:dic];
+        }
+        
+        NSData *dicdata = [NSJSONSerialization dataWithJSONObject:dicArr options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *traceroute = [[NSString alloc] initWithData:dicdata encoding:NSUTF8StringEncoding];
+        params[@"trace"] = traceroute;
+    }
+
     NSData *data = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
-    NSString * json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"lj_json = %@", json);
+    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"it_json = %@", json);
     NSString *sign = [IpTrace aes256_encrypt:json withKey:@"asdrewqsdfzxcfds"];
     
-    NSURL *url = [NSURL URLWithString:@"http://trace.ssoapi.com/v1/ip_info_add"];
-//    NSURL *url = [NSURL URLWithString:@"http://10.3.3.177:17001/v1/ip_info_add"];
+    NSString *path = [NSString stringWithFormat:@"%@%@", IpTraceAPI, @"v1/ip_info_add"];
+    NSURL *url = [NSURL URLWithString:path];
     //网络请求对象
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.timeoutInterval = 5.0;
+    request.timeoutInterval = 15.0;
     request.HTTPMethod = @"POST";
 
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -158,11 +217,16 @@ static NSString *IpTraceLastTime = @"IpTraceLastTime";
     NSURLSessionDataTask * dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"lj_result = %@",result);
+            NSLog(@"it_result = %@",result);
+            
+            NSString *second = self.initdic[@"second"];
+            [[NSUserDefaults standardUserDefaults] setInteger:second.intValue forKey:IpTraceSecond];
+            [[NSUserDefaults standardUserDefaults] setDouble:[[NSDate date] timeIntervalSince1970] forKey:IpTraceLastTime];
         }
     }];
     [dataTask resume];
 }
+
 
 /// 广告标识
 + (NSString *)idfa {
@@ -181,7 +245,7 @@ static NSString *IpTraceLastTime = @"IpTraceLastTime";
                 [[NSUserDefaults standardUserDefaults] setObject:idfa forKey:IpTraceIdfa];
                 return idfa;
             } else {
-                NSLog(@"lj_请在设置-隐私-广告中打开广告跟踪功能");
+                NSLog(@"it_请在设置-隐私-广告中打开广告跟踪功能");
             }
         }
     }

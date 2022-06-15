@@ -247,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = ZhuGuiLei;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 4M93596JSC;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -494,6 +497,7 @@
 			baseConfigurationReference = 2F11FF67501166901221642D /* Pods-IpTrace_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4M93596JSC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IpTrace/IpTrace-Prefix.pch";
 				INFOPLIST_FILE = "IpTrace/IpTrace-Info.plist";
@@ -510,6 +514,7 @@
 			baseConfigurationReference = AB22E9B355444D696AB9DF51 /* Pods-IpTrace_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4M93596JSC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IpTrace/IpTrace-Prefix.pch";
 				INFOPLIST_FILE = "IpTrace/IpTrace-Info.plist";
