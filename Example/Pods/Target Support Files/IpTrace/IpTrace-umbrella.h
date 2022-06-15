@@ -12,6 +12,9 @@
 
 #import "IpTrace.h"
 #import "Reachability.h"
+#import "Traceroute.h"
+#import "TracerouteCommon.h"
+#import "TracerouteRecord.h"
 
 FOUNDATION_EXPORT double IpTraceVersionNumber;
 FOUNDATION_EXPORT const unsigned char IpTraceVersionString[];
