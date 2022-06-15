@@ -55,7 +55,7 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     double interval = [[NSDate date] timeIntervalSince1970] - lastTime;
     NSInteger second = [[NSUserDefaults standardUserDefaults] integerForKey:IpTraceSecond];
     if (second > interval) {
-//        return;
+        return;
     }
     
     /// 定位
