@@ -201,6 +201,7 @@ __Check_Compile_Time(offsetof(IPv6Header, destAddress) == 24);
         if (icmpPacket != NULL && icmpPacket->type == kICMPv6TypeEchoReply) {
             return YES;
         }
+        return YES;
     } else {
         icmpPacket = [TracerouteCommon unpackICMPv4Packet:packet len:len];
         if (icmpPacket != NULL && icmpPacket->type == kICMPv4TypeEchoReply) {
@@ -219,6 +220,7 @@ __Check_Compile_Time(offsetof(IPv6Header, destAddress) == 24);
         if (icmpPacket != NULL && icmpPacket->type == kICMPv6TypeTimeOut) {
             return YES;
         }
+        return YES;
     } else {
         icmpPacket = [TracerouteCommon unpackICMPv4Packet:packet len:len];
         if (icmpPacket != NULL && icmpPacket->type == kICMPv4TypeTimeOut) {

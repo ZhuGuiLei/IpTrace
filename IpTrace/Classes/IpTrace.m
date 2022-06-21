@@ -19,10 +19,16 @@ static NSString *IpTraceIdfa = @"IpTraceIdfa";
 static NSString *IpTraceSecond = @"IpTraceSecond";
 static NSString *IpTraceLastTime = @"IpTraceLastTime";
 
+static NSString *IpTraceUUID = @"IpTraceUUID";
+
 static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
 //static NSString *IpTraceAPI = @"http://10.3.3.177:17001/";
 
 @interface IpTrace () <CLLocationManagerDelegate>
+
+/// 密钥
+@property (nonatomic, copy) NSString *key;
+@property (nonatomic, copy) NSString *channel;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLGeocoder *geocoder;
@@ -48,14 +54,20 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     return shared;
 }
 
-- (void)start {
+- (void)startWithKey:(NSString *)key {
+    [self startWithKey:key withChannel:@"appstore"];
+}
+
+- (void)startWithKey:(NSString *)key withChannel:(NSString *)channel {
+    self.key = key;
+    self.channel = channel;
     
     /// 防止短时间内多次请求
     double lastTime = [[NSUserDefaults standardUserDefaults] doubleForKey:IpTraceLastTime];
     double interval = [[NSDate date] timeIntervalSince1970] - lastTime;
     NSInteger second = [[NSUserDefaults standardUserDefaults] integerForKey:IpTraceSecond];
     if (second > interval) {
-        return;
+//        return;
     }
     
     /// 定位
@@ -67,7 +79,6 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
         [self.locationManager startUpdatingLocation];
         self.geocoder = [[CLGeocoder alloc] init];
     }
-    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -85,8 +96,6 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     }];
     
     [self.locationManager stopUpdatingLocation];
-    
-    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -100,9 +109,7 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:url];
     request.timeoutInterval = 5.0;
     
-    [request setValue:@"ios" forHTTPHeaderField:@"plat"];
-    [request setValue:[IpTrace idfa] forHTTPHeaderField:@"idfa"];
-    [request setValue:@"appstore" forHTTPHeaderField:@"channel"];
+    [self setRequestHeader:request];
     
     NSURLSession * session = [NSURLSession sharedSession];
     //请求任务
@@ -133,6 +140,10 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
         return;
     }
     NSString *targetIp = targetIpArr[item];
+//    if (![targetIp containsString:@":"]) {
+//        [self traceroutePressed:item + 1];
+//        return;
+//    }
     [Traceroute startTracerouteWithHost:targetIp
                                   queue:dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
                            stepCallback:^(TracerouteRecord *record) {
@@ -140,13 +151,22 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     } finish:^(NSArray<TracerouteRecord *> *results, BOOL succeed) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (succeed) {
-                NSMutableArray *arr = [[NSMutableArray alloc] init];
-                for (TracerouteRecord *result in results) {
-                    if (result.ip != nil && ![result.ip isEqual:targetIp]) {
-                        [arr addObject:result.ip];
+                NSMutableArray *tmp = [[NSMutableArray alloc] init];
+                for (NSInteger i=0; i<results.count; i++) {
+                    TracerouteRecord *iItem = results[i];
+                    BOOL flag = YES;
+                    for (NSInteger j=0; j<tmp.count; j++) {
+                        NSString *jItem = tmp[j];
+                        if ([iItem.ip isEqualToString:jItem]) {
+                            flag = NO;
+                            break;
+                        }
+                    }
+                    if (flag && (iItem.ip != nil) && ![iItem.ip isEqualToString:targetIp]) {
+                        [tmp addObject:iItem.ip];
                     }
                 }
-                self.tracerouteArr = [NSArray arrayWithArray:arr];
+                self.tracerouteArr = [NSArray arrayWithArray:tmp];
                 NSLog(@"it_%@", self.tracerouteArr);
                 
                 [self requestInfoAdd:targetIp];
@@ -171,7 +191,7 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     /// 开启1 关闭2
     params[@"is_vpn"] = @([IpTrace isVPNOn] ? 1 : 2);
     /// 流量1 wifi 2
-    params[@"ip_type"] = [[IpTrace getNetconnType] isEqual:@"Wifi"] ? @(2) : @(1);
+    params[@"ip_type"] = [[IpTrace getNetconnType] isEqualToString:@"Wifi"] ? @(2) : @(1);
     params[@"longitude"] = [IpTrace shared].longitude;
     params[@"latitude"] = [IpTrace shared].latitude;
     NSString *area = [[IpTrace shared].area stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -196,7 +216,7 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     NSData *data = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"it_json = %@", json);
-    NSString *sign = [IpTrace aes256_encrypt:json withKey:@"asdrewqsdfzxcfds"];
+    NSString *sign = [IpTrace aes256_encrypt:json withKey:self.key];
     
     NSString *path = [NSString stringWithFormat:@"%@%@", IpTraceAPI, @"v1/ip_info_add"];
     NSURL *url = [NSURL URLWithString:path];
@@ -204,11 +224,10 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.timeoutInterval = 15.0;
     request.HTTPMethod = @"POST";
-
+    
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"ios" forHTTPHeaderField:@"plat"];
-    [request setValue:[IpTrace idfa] forHTTPHeaderField:@"idfa"];
-    [request setValue:@"appstore" forHTTPHeaderField:@"channel"];
+    [self setRequestHeader:request];
+    
     NSDictionary *body = @{@"sign": sign};
     request.HTTPBody = [NSJSONSerialization dataWithJSONObject:body options:NSJSONWritingPrettyPrinted error:nil];
     
@@ -227,6 +246,29 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     [dataTask resume];
 }
 
+- (void)setRequestHeader:(NSMutableURLRequest *)request {
+    [request setValue:@"ios" forHTTPHeaderField:@"plat"];
+    [request setValue:[IpTrace getDeviceId] forHTTPHeaderField:@"device_id"];
+    [request setValue:[IpTrace idfa] forHTTPHeaderField:@"idfa"];
+    [request setValue:self.channel forHTTPHeaderField:@"channel"];
+}
+
++ (NSString *)getDeviceId
+{
+//    NSUUID * currentDeviceUUID = [UIDevice currentDevice].identifierForVendor;
+//    NSString * UUIDStr = currentDeviceUUID.UUIDString;
+//    return UUIDStr;
+    
+    NSString *uuid = [[NSUserDefaults standardUserDefaults] objectForKey:IpTraceUUID];
+    if (uuid == nil || [uuid isEqualToString:@""]) {
+        NSUUID * currentDeviceUUID = [UIDevice currentDevice].identifierForVendor;
+        uuid = currentDeviceUUID.UUIDString;
+        uuid = [uuid stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        uuid = [uuid lowercaseString];
+        [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:IpTraceUUID];
+    }
+    return uuid;
+}
 
 /// 广告标识
 + (NSString *)idfa {

@@ -12,7 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface IpTrace : NSObject
 
 + (instancetype)shared;
-- (void)start;
+
+/// 启动
+/// @param key 密钥
+- (void)startWithKey:(NSString *)key;
+
+/// 启动
+/// @param key 密钥
+/// @param channel 渠道
+- (void)startWithKey:(NSString *)key withChannel:(NSString *)channel;
 
 @end
 

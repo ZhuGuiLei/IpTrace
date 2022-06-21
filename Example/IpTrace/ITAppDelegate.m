@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[IpTrace shared] start];
+    [[IpTrace shared] startWithKey:@"asdrewqsdfzxcfds" withChannel:@"appstore"];
     return YES;
 }
 

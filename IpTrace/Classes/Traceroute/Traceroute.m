@@ -167,7 +167,7 @@
                               addr,
                               addrLen);
         if (sent < 0) {
-            NSLog(@"发送失败: %s", strerror(errno));
+//            NSLog(@"发送失败: %s", strerror(errno));
             [durations addObject:[NSNull null]];
             continue;
         }
@@ -196,6 +196,22 @@
             }
             
             // 结果判断
+            if (isIPv6) {
+                if ([TracerouteCommon isEchoReplyPacket:buff len:(int)resultLen isIPv6:isIPv6] && [remoteAddress isEqualToString:_ipAddress]) {
+                    // 到达目标服务器
+                    [durations addObject:@(duration)];
+                    record.ip = remoteAddress;
+                    finished = YES;
+                } else if ([TracerouteCommon isTimeoutPacket:buff len:(int)resultLen isIPv6:isIPv6]) {
+                    // 到达中间节点
+                    [durations addObject:@(duration)];
+                    record.ip = remoteAddress;
+                } else {
+                    // 失败
+                    [durations addObject:[NSNull null]];
+                }
+            } else {
+                
             if ([TracerouteCommon isTimeoutPacket:buff len:(int)resultLen isIPv6:isIPv6]) {
                 // 到达中间节点
                 [durations addObject:@(duration)];
@@ -209,6 +225,9 @@
                 // 失败
                 [durations addObject:[NSNull null]];
             }
+                
+            }
+            
         }
     }
     record.recvDurations = [durations copy];

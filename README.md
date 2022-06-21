@@ -20,6 +20,12 @@ it, simply add the following line to your Podfile:
 pod 'IpTrace'
 ```
 
+## use
+
+```ruby
+[[IpTrace shared] startWithKey:@"*******" withChannel:@"appstore"];
+```
+
 ## Author
 
 ZhuGuiLei, Zhu123
