@@ -10,6 +10,7 @@
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import <net/if.h>
+#import "IpTrace.h"
 
 #define IOS_CELLULAR    @"pdp_ip0"
 #define IOS_WIFI        @"en0"
@@ -18,6 +19,11 @@
 #define IP_ADDR_IPv6    @"ipv6"
 
 @interface ITViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *t_sdkkey;
+@property (weak, nonatomic) IBOutlet UITextField *t_search;
+@property (weak, nonatomic) IBOutlet UITextField *t_channel;
+@property (weak, nonatomic) IBOutlet UITextView *v_textview;
+
 
 @end
 
@@ -26,9 +32,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.t_channel.text = @"appstore";
+    self.v_textview.editable = NO;
+//    self.v_textview.userInteractionEnabled = NO;
 	// Do any additional setup after loading the view, typically from a nib.
-//    NSString *ip = [self getLocalIPAddress:false];
-//    NSLog(@"ipaddress = %@", ip);
+    NSString *ip = [self getLocalIPAddress:false];
+    NSLog(@"ipaddress = %@", ip);
+
+}
+
+- (IBAction)clickToSearch:(UIButton *)sender {
+    [self.view endEditing:YES];
+    [[IpTrace shared] registersdkKey:self.t_sdkkey.text withChannel:self.t_channel.text];
+    
+    [[IpTrace shared] searchWithIP:self.t_search.text success:^(NSDictionary * _Nullable resultDic) {
+        NSLog(@"success resultdic----->%@", resultDic);
+        // dic 为初始字典
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:resultDic options:NSJSONWritingPrettyPrinted error:nil];
+        // json 为 转换后的 字符串
+        NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            self.v_textview.text = json;
+        });
+        
+    } fail:^(NSError * _Nullable error) {
+        NSLog(@"error%@", error);
+    }];
+    
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
 }
 
 - (NSString *)getLocalIPAddress:(BOOL)preferIPv4 {

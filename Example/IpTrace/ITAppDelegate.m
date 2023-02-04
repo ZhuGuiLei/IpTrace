@@ -8,13 +8,19 @@
 
 #import "ITAppDelegate.h"
 #import "IpTrace.h"
+#import "ITViewController.h"
 
 @implementation ITAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    [[IpTrace shared] startWithKey:@"*******" withChannel:@"appstore"];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    ITViewController *viewVC =  [[ITViewController alloc]init];
+    self.window.rootViewController = viewVC;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

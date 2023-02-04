@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IpTrace'
-  s.version          = '1.0.5'
+  s.version          = '1.0.7'
   s.summary          = 'IpTrace: IP信息'
 
 # This description is used to generate tags and improve search results.
@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
   #   'IpTrace' => ['IpTrace/Assets/*.png']
   # }
 
-#  s.public_header_files = 'Pod/Classes/IpTrace.h'
+  s.public_header_files = 'Pod/Classes/IpTrace.h'
   s.frameworks = 'UIKit', 'SystemConfiguration', 'CoreTelephony', 'CoreLocation'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		045BF431298CB61200527BC7 /* ITViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045BF42F298CB61200527BC7 /* ITViewController.xib */; };
 		5CD706710940A563CF831CAB /* Pods_IpTrace_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541E407A0CD126D5AF408000 /* Pods_IpTrace_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		045BF42F298CB61200527BC7 /* ITViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITViewController.xib; sourceTree = "<group>"; };
 		158D3BBE9AD5D6927770BC5B /* Pods_IpTrace_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IpTrace_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E9D3A9A093B479E4C201D2E /* Pods-IpTrace_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IpTrace_Tests.debug.xcconfig"; path = "Target Support Files/Pods-IpTrace_Tests/Pods-IpTrace_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F11FF67501166901221642D /* Pods-IpTrace_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IpTrace_Example.debug.xcconfig"; path = "Target Support Files/Pods-IpTrace_Example/Pods-IpTrace_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* ITViewController.h */,
 				6003F5A6195388D20070C39A /* ITViewController.m */,
+				045BF42F298CB61200527BC7 /* ITViewController.xib */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -248,7 +251,7 @@
 				ORGANIZATIONNAME = ZhuGuiLei;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = 4M93596JSC;
+						DevelopmentTeam = 5Z43YRDNPC;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				045BF431298CB61200527BC7 /* ITViewController.xib in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
@@ -497,7 +501,7 @@
 			baseConfigurationReference = 2F11FF67501166901221642D /* Pods-IpTrace_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4M93596JSC;
+				DEVELOPMENT_TEAM = 5Z43YRDNPC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IpTrace/IpTrace-Prefix.pch";
 				INFOPLIST_FILE = "IpTrace/IpTrace-Info.plist";
@@ -514,7 +518,7 @@
 			baseConfigurationReference = AB22E9B355444D696AB9DF51 /* Pods-IpTrace_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4M93596JSC;
+				DEVELOPMENT_TEAM = 5Z43YRDNPC;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IpTrace/IpTrace-Prefix.pch";
 				INFOPLIST_FILE = "IpTrace/IpTrace-Info.plist";

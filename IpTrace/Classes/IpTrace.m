@@ -22,7 +22,9 @@ static NSString *IpTraceLastTime = @"IpTraceLastTime";
 static NSString *IpTraceUUID = @"IpTraceUUID";
 
 static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
+static NSString *IPSearchAPI = @"https://app.ipdatacloud.com/";
 //static NSString *IpTraceAPI = @"http://10.3.3.177:17001/";
+//static NSString *IpTraceAPI = @"http://58.218.214.197:17001/";
 
 @interface IpTrace () <CLLocationManagerDelegate>
 
@@ -40,6 +42,9 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
 
 @property (nonatomic, strong) NSDictionary *initdic;
 @property (nonatomic, strong) NSArray *tracerouteArr;
+
+/// sdkkey
+@property (nonatomic, copy) NSString *sdkkey;
 
 @end
 
@@ -78,7 +83,72 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
         [self.locationManager requestWhenInUseAuthorization];
         [self.locationManager startUpdatingLocation];
         self.geocoder = [[CLGeocoder alloc] init];
+    } else {
+        [self requestInit];
     }
+}
+/// 注册sdk套餐专属KEY
+- (void)registersdkKey:(NSString *)sdkKey withChannel:(NSString *)channel{
+    [self registersdkKey:sdkKey withKey:@"asdrewqsdfzxcfds" withChannel:channel];
+}
+
+/// 注册sdk套餐专属KEY
+- (void)registersdkKey:(NSString *)sdkKey withKey:(nonnull NSString *)key withChannel:(NSString *)channel {
+    self.sdkkey = sdkKey;
+    self.channel = channel;
+    self.key = key;
+    [self startWithKey:key withChannel:channel];
+}
+
+/// 查询
+/// @param searchIP 查询ip
+- (void)searchWithIP:(NSString *)searchIP success:(nonnull SuccessBlock)successBlock fail:(nonnull FailBlock)failBlock{
+  
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    params[@"ip"] = searchIP;
+    params[@"key"] = self.sdkkey;
+
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"it_json = %@", json);
+    NSString *sign = [IpTrace aes256_encrypt:json withKey:self.key];
+    
+    NSString *path = [NSString stringWithFormat:@"%@%@", IPSearchAPI, @"v1/query_ip_zone_app"];
+    NSURL *url = [NSURL URLWithString:path];
+    //网络请求对象
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.timeoutInterval = 15.0;
+    request.HTTPMethod = @"POST";
+    
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [self setRequestHeader:request];
+    
+    NSDictionary *body = @{@"sign": sign};
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:body options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    //请求任务
+    NSURLSessionDataTask * dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSLog(@"it_result = %@",result);
+            successBlock(result);
+//            int code = [result[@"code"] intValue];
+//            if (code == 200) {
+//                successBlock(result);
+////                self.initdic = result[@"data"];
+//            }else{
+//                NSError *errorcode = [[NSError alloc]initWithDomain:result[@"msg"] code:code userInfo:nil];
+//                failBlock(errorcode);
+//            }
+//            NSString *second = self.initdic[@"second"];
+//            [[NSUserDefaults standardUserDefaults] setInteger:second.intValue forKey:IpTraceSecond];
+//            [[NSUserDefaults standardUserDefaults] setDouble:[[NSDate date] timeIntervalSince1970] forKey:IpTraceLastTime];
+        }else{
+            failBlock(error);
+        }
+    }];
+    [dataTask resume];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
@@ -100,6 +170,7 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"it_location = 定位失败");
+    [self requestInit];
 }
 
 - (void)requestInit {
@@ -163,7 +234,13 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
                         }
                     }
                     if (flag && (iItem.ip != nil) && ![iItem.ip isEqualToString:targetIp]) {
-                        [tmp addObject:iItem.ip];
+                        id first = iItem.recvDurations.firstObject;
+                        float time = 0;
+                        if ([first isKindOfClass:[NSNumber class]]) {
+                            time = [(NSNumber *)first floatValue] * 1000;
+                        }
+                        NSString *ip = [NSString stringWithFormat:@"%@|%.2f", iItem.ip, time];
+                        [tmp addObject:ip];
                     }
                 }
                 self.tracerouteArr = [NSArray arrayWithArray:tmp];
@@ -251,6 +328,13 @@ static NSString *IpTraceAPI = @"http://trace.ssoapi.com/";
     [request setValue:[IpTrace getDeviceId] forHTTPHeaderField:@"device_id"];
     [request setValue:[IpTrace idfa] forHTTPHeaderField:@"idfa"];
     [request setValue:self.channel forHTTPHeaderField:@"channel"];
+    double interval = [[NSDate date] timeIntervalSince1970];
+    NSString *time = [NSString stringWithFormat:@"%.0f", interval];
+    [request setValue:time forHTTPHeaderField:@"time"];
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = infoDic[@"CFBundleShortVersionString"];
+    version = [version stringByReplacingOccurrencesOfString:@"." withString:@""];
+    [request setValue:version forHTTPHeaderField:@"version"];
 }
 
 + (NSString *)getDeviceId
