@@ -1,5 +1,5 @@
 PODS:
-  - IpTrace (1.0.5)
+  - IpTrace (1.0.7)
 
 DEPENDENCIES:
   - IpTrace (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  IpTrace: 1813201f4144cca6ce4b7900f793f0d9e37d5be8
+  IpTrace: e66c4358585c461e0a092ea395a1ff1b5f29afe5
 
 PODFILE CHECKSUM: 05b2b1903d1b227c25f9a01d2c263ab35d948cfd
 
